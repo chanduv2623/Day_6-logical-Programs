@@ -5,13 +5,19 @@ using System.Runtime.ConstrainedExecution;
 using System.Runtime.Intrinsics.X86;
 using System;
 using System.ComponentModel.Design;
-
-Console.WriteLine("Plese Enter Your Input Number");
-int n;
-n = Convert.ToInt32(Console.ReadLine());
-if (n % 2 == 0)
-    Console.WriteLine(n + "Is an Even Number");
-else
-    Console.WriteLine(n + "Is an Odd Number");
-Console.ReadKey();
-           
+public class ReverseExample
+{
+    public static void Main(string[] args)
+    {
+        int n, reverse = 0, rem;
+Console.Write("Enter a number: ");
+n = int.Parse(Console.ReadLine());
+while (n != 0)
+{
+    rem = n % 10;
+    reverse = reverse * 10 + rem;
+    n /= 10;
+}
+Console.Write("Reversed Number: " + reverse);       
+    }  
+  }  
