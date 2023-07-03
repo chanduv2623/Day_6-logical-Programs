@@ -11,27 +11,39 @@ namespace DAy_6_Logical_Programs
     {
         static void Main(string[] args)
         {
-            int count;
-            Console.WriteLine("Enter the number of Fibonacci numbers to generate:");
-            count = int.Parse(Console.ReadLine());
+            int number;
+            Console.WriteLine("Enter a number:");
+            number = int.Parse(Console.ReadLine());
 
-            Random random = new Random();
-            int first = random.Next(10); // Generate a random number between 0 and 9
-            int second = random.Next(10); // Generate a random number between 0 and 9
+            bool isPerfect = IsPerfectNumber(number);
 
-            Console.WriteLine($"Random Fibonacci Series of {count} numbers:");
-
-            // Generate the Fibonacci series
-            for (int i = 0; i < count; i++)
+            if (isPerfect)
             {
-                int fibonacci = first + second;
-                Console.WriteLine(fibonacci);
-
-                // Shift the numbers
-                first = second;
-                second = fibonacci;
+                Console.WriteLine($"{number} is a perfect number.");
             }
+            else
+            {
+                Console.WriteLine($"{number} is not a perfect number.");
+            }
+
             Console.ReadLine();
+        }
+
+        static bool IsPerfectNumber(int number)
+        {
+            int sum = 0;
+
+            // Find the divisors and calculate the sum
+            for (int i = 1; i < number; i++)
+            {
+                if (number % i == 0)
+                {
+                    sum += i;
+                }
+            }
+
+            // Check if the sum of divisors equals the number
+            return sum == number;
         }
     }
 }
